@@ -43,7 +43,7 @@ gem "bootsnap", require: false
 
 gem 'mail', '~> 2.8'  # IMAP email fetching
 gem 'ruby-openai'  # OpenAI GPT-4 API
-
+gem 'rails_12factor'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
