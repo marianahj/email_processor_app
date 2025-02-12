@@ -20,7 +20,7 @@ class ProcessedEmail < ApplicationRecord
   end
 
   def action
-    action = JSON.parse(ai_response).dig("Action", "action")
+    action = JSON.parse(ai_response).dig("Action")["action"]
     return "#{action} order" if action
     "undefined"
   end
