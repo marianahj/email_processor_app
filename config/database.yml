@@ -79,8 +79,7 @@ test:
 #
 production:
   <<: *default
-  database: email_processor_app_production
-  username: email_processor_app
-  password: <%= ENV["EMAIL_PROCESSOR_APP_DATABASE_PASSWORD"] %>
   adapter: postgresql
+  encoding: unicode
+  pool: 10
   url: <%= ENV['DATABASE_URL'] %>
