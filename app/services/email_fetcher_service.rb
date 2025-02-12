@@ -29,11 +29,11 @@ class EmailFetcherService
       puts "📝 Body: #{email_body.force_encoding('UTF-8').encode('UTF-8', invalid: :replace, undef: :replace, replace: '?').truncate(300)}"
 
       # Process email with OpenAI
-      # processed_data = OpenAIProcessorService.analyze_email(email_body)
-      # puts "🔍 Extracted Data: #{processed_data}"
-      #
-      # # Mark email as read
-      # imap.store(email_id, "+FLAGS", [:Seen])
+      processed_data = OpenAIProcessorService.analyze_email(email_body)
+      puts "🔍 Extracted Data: #{processed_data}"
+
+      # Mark email as read
+      imap.store(email_id, "+FLAGS", [:Seen])
     end
 
     imap.logout

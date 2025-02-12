@@ -42,7 +42,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 gem 'mail', '~> 2.8'  # IMAP email fetching
-gem 'openai', '~> 0.3.0'  # OpenAI GPT-4 API
+gem 'ruby-openai'  # OpenAI GPT-4 API
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
