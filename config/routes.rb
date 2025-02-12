@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
 
   resources :processed_emails, only: [:index, :show]
+  resources :orders, only: [:index, :show]
 end

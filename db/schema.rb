@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_12_034002) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_12_080648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_12_034002) do
     t.text "processed_summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_emails_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "product_name"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "processed_emails", force: :cascade do |t|
@@ -28,8 +37,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_12_034002) do
     t.datetime "updated_at", null: false
     t.text "ai_response"
     t.bigint "email_id", null: false
+    t.bigint "order_id"
     t.index ["email_id"], name: "index_processed_emails_on_email_id"
+    t.index ["order_id"], name: "index_processed_emails_on_order_id"
   end
 
+  add_foreign_key "emails", "orders"
   add_foreign_key "processed_emails", "emails"
+  add_foreign_key "processed_emails", "orders"
 end

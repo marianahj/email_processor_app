@@ -1,10 +1,31 @@
-<h1>Email Fetcher and AI Processor</h1>
-<h3>Instructions:</h3>
-<div>
-  <p>1. Send an email to <span>mariana@lyradesigns.com</span></p>
-  <p>2. Wait 1 minute to let the email to arrive to the inbox</p>
-  <p>3. Click the Fetch Emails button to import all the <span>unread</span>emails</p>
-</div>
-<div>
-  <%= button_to "Fetch Emails", fetch_emails_path, method: :post, class: "btn btn-primary" %>
+<div class="w-100 p-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Email Fetcher and AI Processor</h1>
+    </div>
+    <div class="col-md-4">
+      <ul style="list-style: none; padding: 0; display: flex; gap: 15px;">
+        <li><%= link_to "Emails", emails_path %></li>
+        <li><%= link_to "Processed Emails", processed_emails_path %></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <h3>Instructions:</h3>
+  <div>
+    <ol>
+      <li>Send an email to <strong>mariana@lyradesigns.com</strong>
+        <ol type="a">
+          <li>Try to keep it around 300 characters.</li>
+          <li>Make reference to order ID, vendor, fabric, materials, change order status.</li>
+        </ol>
+      </li>
+      <li>Wait 1 minute to let the email to arrive to the inbox.</li>
+      <li>Click the Fetch Emails button to import all the <strong>unread</strong> emails.</li>
+    </ol>
+  </div>
+  <div>
+    <%= button_to "Fetch Emails", fetch_emails_path, method: :post, class: "btn btn-primary" %>
+  </div>
 </div>

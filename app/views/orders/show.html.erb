@@ -1,0 +1,61 @@
+<h1>Order Emails and AI</h1>
+<div>
+  <h3>Emails</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Email ID</th>
+      <th>Sender</th>
+      <th>Subject</th>
+      <th>Email Body</th>
+      <th>Received At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.id %></td>
+        <td><%= email.sender %></td>
+        <td><%= email.subject %></td>
+        <td><%= email.body %></td>
+        <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h3>AI Processed Emails</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Email ID</th>
+      <th>Created At</th>
+      <th>AI Response</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @processed_emails.each do |email| %>
+      <tr>
+        <td><%= email.email.id %></td>
+        <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
+        <td><%= email.ai_response %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+{
+"Vendor Details" => {
+"Name" => "Alejandra",
+},
+"Order" => "1234",
+"Inventory" => {
+"Brown Fabric" => "5 meters",
+"Red Fabric" => "2.5 meters",
+},
+"Order Summary" => "If client wants brown fabric, order 5 meters. If client wants red fabric, order 2.5 meters."
+}

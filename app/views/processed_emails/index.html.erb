@@ -1,19 +1,43 @@
-<h1>AI Processed Emails Dashboard</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Email ID</th>
-    <th>Created At</th>
-    <th>AI Response</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @processed_emails.each do |email| %>
+<div class="w-100 p-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>AI Processed Emails Dashboard</h1>
+    </div>
+    <div class="col-md-4">
+      <ul style="list-style: none; padding: 0; display: flex; gap: 15px;">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Emails", emails_path %></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
     <tr>
-      <td><%= email.email.id %></td>
-      <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
-      <td><%= email.ai_response %></td>
+      <th>Email ID</th>
+      <th>Created At</th>
+      <th>AI Response</th>
+      <th>Order ID</th>
+      <th>Vendor</th>
+      <th>Email Summary</th>
+      <th>Needs Attention</th>
+      <th>Action</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <% @processed_emails.each do |email| %>
+      <tr>
+        <td><%= email.email.id %></td>
+        <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
+        <td><%= email.ai_response %></td>
+        <td><%= email.order_id %></td>
+        <td><%= email.vendor %></td>
+        <td><%= email.summary %></td>
+        <td><%= email.attention %></td>
+        <td><%= email.action %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

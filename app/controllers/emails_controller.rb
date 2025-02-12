@@ -14,7 +14,7 @@ class EmailsController < ApplicationController
 
   def analyze
     email = Email.find(params[:email_id])
-    OpenAIProcessorService.analyze_email(email) # This should call your AI processing logic
+    OpenAiProcessorService.analyze_email(email) # This should call your AI processing logic
     redirect_to processed_emails_path, notice: "AI Processing completed!"
   end
 end
