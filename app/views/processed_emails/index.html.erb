@@ -1,0 +1,19 @@
+<h1>AI Processed Emails Dashboard</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Email ID</th>
+    <th>Created At</th>
+    <th>AI Response</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @processed_emails.each do |email| %>
+    <tr>
+      <td><%= email.email.id %></td>
+      <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
+      <td><%= email.ai_response %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

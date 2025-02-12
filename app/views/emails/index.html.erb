@@ -1,0 +1,33 @@
+<h1>Email Inbox</h1>
+<div>
+  <p>This table includes all the emails that have been imported. This can be change to display only the emails that hasn't been processed.</p>
+  <p>The column <span>Body</span> is only displaying 300 characters.</p>
+  <p>Click the button "Process with AI" to get the email processed.</p>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Email ID</th>
+    <th>Sender</th>
+    <th>Subject</th>
+    <th>Email Body</th>
+    <th>Received At</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @emails.each do |email| %>
+    <tr>
+      <td><%= email.id %></td>
+      <td><%= email.sender %></td>
+      <td><%= email.subject %></td>
+      <td><%= email.body %></td>
+      <td><%= email.created_at.strftime("%b %d, %Y %H:%M") %></td>
+      <td>
+        <%= button_to "Process with AI", analyze_emails_path(email_id: email.id), method: :post, class: "btn btn-success" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

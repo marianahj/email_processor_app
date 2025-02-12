@@ -28,12 +28,19 @@ class EmailFetcherService
       puts "📌 Subject: #{email_subject}"
       puts "📝 Body: #{email_body.force_encoding('UTF-8').encode('UTF-8', invalid: :replace, undef: :replace, replace: '?').truncate(300)}"
 
-      # Process email with OpenAI
-      processed_data = OpenAIProcessorService.analyze_email(email_body)
-      puts "🔍 Extracted Data: #{processed_data}"
+      # # Process email with OpenAI
+      # processed_data = OpenAIProcessorService.analyze_email(email_body)
+      # puts "🔍 Extracted Data: #{processed_data}"
 
       # Mark email as read
       imap.store(email_id, "+FLAGS", [:Seen])
+
+      # Store the processed email in the database
+      Email.create!(
+        sender: sender_email,
+        subject: email_subject,
+        body: email_body
+      )
     end
 
     imap.logout

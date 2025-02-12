@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'emails/index'
+  get 'emails/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -7,4 +9,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  root 'dashboards#index'
+
+  resources :emails, only: [:index, :show] do
+    collection do
+      post :fetch  # To trigger email fetching
+      post :analyze # To trigger AI processing
+    end
+  end
+
+  resources :processed_emails, only: [:index, :show]
 end

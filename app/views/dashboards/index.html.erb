@@ -1,0 +1,10 @@
+<h1>Email Fetcher and AI Processor</h1>
+<h3>Instructions:</h3>
+<div>
+  <p>1. Send an email to <span>mariana@lyradesigns.com</span></p>
+  <p>2. Wait 1 minute to let the email to arrive to the inbox</p>
+  <p>3. Click the Fetch Emails button to import all the <span>unread</span>emails</p>
+</div>
+<div>
+  <%= button_to "Fetch Emails", fetch_emails_path, method: :post, class: "btn btn-primary" %>
+</div>
